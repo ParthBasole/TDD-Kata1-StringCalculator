@@ -23,5 +23,11 @@ public class JunitTest {
 		@Test
 		public void testAddMult() {
 	     assertEquals(24,calc.Add("2,3,6,7,6"),"This String should give out 5");
-}
+
+		}
+		@Test
+		public void testDiffDel()
+		{
+			assertEquals(7,calc.Add("2\n2,3"),"This should give out 6 check split");
+		}
 }
