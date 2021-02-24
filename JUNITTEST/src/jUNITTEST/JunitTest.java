@@ -11,8 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.Rule;
 public class JunitTest {
 	 
-		private StringCalculator calc;
-		@BeforeEach
+		private StringCalculator calc;     
+		@BeforeEach            //Setup 
 		public void setup() {
 			calc=new StringCalculator();
 		}
