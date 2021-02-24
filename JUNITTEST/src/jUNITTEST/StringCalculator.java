@@ -54,20 +54,25 @@ public int a=0;
         int F_index=0,B_index=0,W_index=0;
         B_index=str.length();
  	    String temp;
-        while(B_index!=target.length())
+        while(B_index<=target.length())
         	{
         	temp=target.substring(F_index,B_index);
         	System.out.println(temp+"  B_index "+B_index+"  F_index "+F_index+"  W_index "+W_index); 
         	if(temp.equals(str))
         	 	{ar.add(target.substring(W_index,F_index));
+        	 	 System.out.println("Added"+target.substring(W_index,F_index));
  		         F_index=B_index;
  		         W_index=B_index;
  		         B_index+=Math.min(str.length(),target.length()-B_index);
+ 		         System.out.println(target.length()-B_index);
+ 		        System.out.println(temp+"  B_index "+B_index+"  F_index "+F_index+"  W_index "+W_index);
         	 	}
         		F_index++;
         		B_index++;
-        	 } 
-        rtr=new String[ar.size()];
+        	 }
+        System.out.print("added"+target.substring(F_index-1,B_index-1));
+        ar.add(target.substring(F_index-1,B_index-1));
+        rtr=new String[ar.size()];    
         rtr=ar.toArray(rtr);
 		 return rtr;
 	}

@@ -73,12 +73,12 @@ public class JunitTest {
 		@Test
 		public void anyLength() throws NegativeEx
 		{
-			assertEquals(326,calc.Add("//***\n4***322***3000"));
+			assertEquals(626,calc.Add("//+++**\n4+++**322+++**300"));
 		}
 		
 		@Test
 		public void FuncChecker()
 		{
-			calc.stringSplit("***","4***322***3000");
+			calc.stringSplit("+++*","4+++*322+++*3000");
 		}
 }
