@@ -70,4 +70,15 @@ public class JunitTest {
 			assertEquals(326,calc.Add("4,322,3000"));
 		}
 		
+		@Test
+		public void anyLength() throws NegativeEx
+		{
+			assertEquals(326,calc.Add("//***\n4***322***3000"));
+		}
+		
+		@Test
+		public void FuncChecker()
+		{
+			calc.stringSplit("***","4***322***3000");
+		}
 }
