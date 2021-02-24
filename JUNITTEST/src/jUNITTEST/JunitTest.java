@@ -28,7 +28,7 @@ public class JunitTest {
 		@Test
 		public void testDiffDel()
 		{
-			assertEquals(6,calc.Add("2\n2,3"),"This should give out 6 check split");
+			assertEquals(7,calc.Add("2\n2,3"),"This should give out 6 check split");
 		}
 		@Test
 		public void testCustDel()
