@@ -81,4 +81,21 @@ public class JunitTest {
 		{
 			calc.stringSplit("+++*","4+++*322+++*3000");
 		}
+		
+		@Test
+		public void MultipleDel() throws NegativeEx
+		{
+			assertEquals(100,calc.Add("//[%][*]\n4%56*40"));
+		}
+		
+		@Test
+		public void Brack() throws NegativeEx
+		{
+			calc.indexofallBrack("[%][*]","4%56*40");
+		}
+		@Test
+		public void MultipleLDel() throws NegativeEx
+		{
+			assertEquals(100,calc.Add("//[%**][##*]\n4%**56##*40"));
+		}
 }
