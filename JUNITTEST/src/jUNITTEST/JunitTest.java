@@ -48,8 +48,7 @@ public class JunitTest {
 		}
 		
 		//@SuppressWarnings("deprecation")
-		@Rule
-		public ExpectedException exception=ExpectedException.none();
+		
 		@Test
 		public void testNegatov()
 		{
@@ -60,10 +59,15 @@ public class JunitTest {
 					);
 		}
 		@Test
-		public void checkMethodCalls()
+		public void checkMethodCalls() throws NegativeEx
 		{
 			System.out.print(calc.GetCalledCount());
 		}
 		
+		@Test
+		public void moreThanTwothousand() throws NegativeEx
+		{
+			assertEquals(326,calc.Add("4,322,3000"));
+		}
 		
 }
