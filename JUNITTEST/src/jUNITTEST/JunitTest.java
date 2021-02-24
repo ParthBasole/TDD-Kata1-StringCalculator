@@ -2,6 +2,8 @@ package jUNITTEST;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.rules.ExpectedException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 public class JunitTest {
 	 
@@ -40,4 +42,14 @@ public class JunitTest {
 		{
 			assertEquals(9,calc.Add("//p\n2p3p2p2"),"This should give out 9 check split");
 		}
+		public final ExpectedException exception=ExpectedException.none();
+		@Test
+		public void testNegatov()
+		{
+			exception.expect(NegativeEx.class);
+			calc.Add("//p\n-2p-2p3");
+		}
+		
+		
+		
 }

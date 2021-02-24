@@ -2,9 +2,9 @@ package jUNITTEST;
 
 
 public class StringCalculator {
-
+public int a=0;
 	public int Add(String numbers)
-	{
+	{ a++;
 		if(numbers.length()==0)
 		return 0;
 		
@@ -17,22 +17,39 @@ public class StringCalculator {
 			
 	        strarr=numbers.split("\n",2);
     			
-			if(strarr.length>1)
-			{
-				System.out.print(strarr.length);
-				char del=strarr[0].charAt(strarr[0].length()-1);
-				rstrarr=strarr[1].split(Character.toString(del),-1);
-			}
+					if(strarr.length>1)
+					{
+						System.out.print(strarr.length);
+						char del=strarr[0].charAt(strarr[0].length()-1);
+						rstrarr=strarr[1].split(Character.toString(del),-1);
+					}
     		}
-		else {
-			rstrarr=numbers.split("\n|\\,",-1);	
-		}
-    
-    for(String a: rstrarr)
-	{sum+=Integer.parseInt(a);
 		
-	}
+		else{
+			rstrarr=numbers.split("\n|\\,",-1);	
+	 	    }
+    
+		    for(String a: rstrarr)
+			{  try
+			  { 	int temp=Integer.parseInt(a);
+			        if(temp<0)
+			        	{
+			        		throw new NegativeEx(a);
+			        	}
+			        sum+=temp;
+			  }
+			  catch (NegativeEx ex)
+			  {
+				  System.out.println(ex.getMessage());
+			  }
+			}
 		return sum;
+	}
+	
+	
+	public int GetCalledCount()
+	{
+		return a;
 	}
 	
 	public static void main(String[] args) {
