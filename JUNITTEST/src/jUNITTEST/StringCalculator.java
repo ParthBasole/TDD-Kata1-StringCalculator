@@ -3,7 +3,7 @@ package jUNITTEST;
 
 public class StringCalculator {
 public int a=0;
-	public int Add(String numbers)
+	public int Add(String numbers) throws NegativeEx
 	{ a++;
 		if(numbers.length()==0)
 		return 0;
@@ -30,18 +30,14 @@ public int a=0;
 	 	    }
     
 		    for(String a: rstrarr)
-			{  try
-			  { 	int temp=Integer.parseInt(a);
+			{   	int temp=Integer.parseInt(a);
 			        if(temp<0)
 			        	{
 			        		throw new NegativeEx(a);
 			        	}
 			        sum+=temp;
-			  }
-			  catch (NegativeEx ex)
-			  {
-				  System.out.println(ex.getMessage());
-			  }
+			  
+			  
 			}
 		return sum;
 	}

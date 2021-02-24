@@ -3,8 +3,12 @@ package jUNITTEST;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.rules.ExpectedException;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.Rule;
 public class JunitTest {
 	 
 		private StringCalculator calc;
@@ -14,42 +18,52 @@ public class JunitTest {
 		}
 		
 		@Test
-		public void testAdd() {
+		public void testAdd() throws NegativeEx {
 	     assertEquals(0,calc.Add(""),"Null String should give out 0");
 }
 		
 		@Test
-		public void testAddS() {
+		public void testAddS() throws NegativeEx {
 	     assertEquals(5,calc.Add("2,3"),"This String should give out 5");
 }
 		@Test
-		public void testAddMult() {
+		public void testAddMult() throws NegativeEx{
 	     assertEquals(24,calc.Add("2,3,6,7,6"),"This String should give out 5");
 
 		}
 		@Test
-		public void testDiffDel()
+		public void testDiffDel() throws NegativeEx
 		{
 			assertEquals(7,calc.Add("2\n2,3"),"This should give out 6 check split");
 		}
 		@Test
-		public void testCustDel()
+		public void testCustDel() throws NegativeEx
 		{
 			assertEquals(7,calc.Add("//;\n2;3;2"),"This should give out 7 check split");
 		}
 		@Test
-		public void testCustDel1()
+		public void testCustDel1() throws NegativeEx
 		{
 			assertEquals(9,calc.Add("//p\n2p3p2p2"),"This should give out 9 check split");
 		}
-		public final ExpectedException exception=ExpectedException.none();
+		
+		//@SuppressWarnings("deprecation")
+		@Rule
+		public ExpectedException exception=ExpectedException.none();
 		@Test
 		public void testNegatov()
 		{
-			exception.expect(NegativeEx.class);
-			calc.Add("//p\n-2p-2p3");
+			NegativeEx thrown=assertThrows(
+					NegativeEx.class,
+					()->calc.Add("//p\n-2p3p2p2"),
+					"expected negative throw"
+					);
 		}
-		
+		@Test
+		public void checkMethodCalls()
+		{
+			System.out.print(calc.GetCalledCount());
+		}
 		
 		
 }
